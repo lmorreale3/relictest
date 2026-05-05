@@ -31,10 +31,10 @@ const map = L.map('map', {
 // Historic / no-border tile layer (Stamen Watercolor via Stadia — medieval-looking)
 // Falls back to a clean light layer without modern boundaries
 const tileLayer = L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png",
   {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, © <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
+    attribution: "© OpenStreetMap contributors, © CARTO",
+    subdomains: "abcd",
     maxZoom: 19,
   }
 );
