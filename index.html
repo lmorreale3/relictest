@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>True Cross Relic Geospatial Explorer</title>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Leaflet.markercluster -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+  <!-- noUiSlider -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<div id="sidebar">
+  <div id="sidebar-header">
+    <div id="logo-area">
+      <div id="logo-cross">✝</div>
+      <div>
+        <h1>True Cross Relics</h1>
+        <p id="subtitle">Geospatial Explorer · c. 1150–1259</p>
+      </div>
+    </div>
+    <button id="sidebar-toggle" title="Collapse sidebar">&#10094;</button>
+  </div>
+
+  <div id="sidebar-body">
+
+    <!-- Result count -->
+    <div id="result-count-box">
+      <span id="result-count">168</span> relics displayed
+    </div>
+
+    <!-- Time Slider -->
+    <section class="sidebar-section">
+      <h2 class="section-title">
+        <span class="section-icon">📅</span> Date Range
+      </h2>
+      <div id="time-slider-wrap">
+        <div id="time-slider"></div>
+        <div id="time-labels">
+          <span id="time-min-label">c. 1150</span>
+          <span id="time-max-label">1259</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- View Mode -->
+    <section class="sidebar-section">
+      <h2 class="section-title">
+        <span class="section-icon">🗺</span> Display Mode
+      </h2>
+      <div class="radio-group" id="mode-group">
+        <label class="radio-label active-label">
+          <input type="radio" name="mode" value="location" checked /> All Relics (Location)
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="mode" value="shape" /> By Shape
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="mode" value="material" /> By Material
+        </label>
+      </div>
+    </section>
+
+    <!-- Shape Filter -->
+    <section class="sidebar-section" id="shape-section">
+      <h2 class="section-title">
+        <span class="section-icon">✦</span> Relic Shape
+      </h2>
+      <div class="filter-search-wrap">
+        <input type="text" id="shape-search" placeholder="Search shapes…" class="filter-search" />
+      </div>
+      <div id="shape-list" class="checklist"></div>
+    </section>
+
+    <!-- Material Filter -->
+    <section class="sidebar-section" id="material-section">
+      <h2 class="section-title">
+        <span class="section-icon">⚗</span> Material
+      </h2>
+      <div class="filter-search-wrap">
+        <input type="text" id="material-search" placeholder="Search materials…" class="filter-search" />
+      </div>
+      <div id="material-list" class="checklist"></div>
+    </section>
+
+    <!-- Country Filter -->
+    <section class="sidebar-section">
+      <h2 class="section-title">
+        <span class="section-icon">🏴</span> Country / Region
+      </h2>
+      <div class="filter-search-wrap">
+        <input type="text" id="country-search" placeholder="Search countries…" class="filter-search" />
+      </div>
+      <div id="country-list" class="checklist"></div>
+    </section>
+
+    <!-- Reset -->
+    <div id="reset-wrap">
+      <button id="reset-btn">Reset All Filters</button>
+    </div>
+
+    <!-- Legend (shown when colour mode active) -->
+    <section class="sidebar-section" id="legend-section" style="display:none;">
+      <h2 class="section-title">
+        <span class="section-icon">🎨</span> Legend
+      </h2>
+      <div id="legend-list"></div>
+    </section>
+
+    <!-- About -->
+    <section class="sidebar-section" id="about-section">
+      <h2 class="section-title">
+        <span class="section-icon">ℹ</span> About
+      </h2>
+      <p class="about-text">
+        This explorer maps documented relics of the True Cross from approximately the 12th to mid-13th century.
+        Data is drawn from a scholarly catalogue of attestations organized by decade.
+        Use the date slider and filters to explore how, where, and in what form these relics were documented across medieval Europe and the Near East.
+      </p>
+    </section>
+
+  </div><!-- /sidebar-body -->
+</div><!-- /sidebar -->
+
+<!-- ===== COLLAPSED SIDEBAR TOGGLE ===== -->
+<button id="sidebar-open-btn" title="Open sidebar" style="display:none;">&#10095;</button>
+
+<!-- ===== MAP ===== -->
+<div id="map"></div>
+
+<!-- ===== POPUP DETAIL PANEL ===== -->
+<div id="detail-panel" class="hidden">
+  <button id="detail-close">✕</button>
+  <div id="detail-content"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
