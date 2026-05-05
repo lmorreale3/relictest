@@ -31,47 +31,14 @@ const map = L.map('map', {
 // Historic / no-border tile layer (Stamen Watercolor via Stadia — medieval-looking)
 // Falls back to a clean light layer without modern boundaries
 const tileLayer = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg',
-  {
-    attribution: 'Map tiles by <a href="https://stamen.com">Stamen Design</a>, ' +
-                 'under <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. ' +
-                 'Data by <a href="https://openstreetmap.org">OpenStreetMap</a>.',
-    minZoom: 2,
-    maxZoom: 16,
-    errorTileUrl: ''
-  }
-);
-
-const tileLayerFallback = L.tileLayer(
   'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
   {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-                 '© <a href="https://carto.com/attributions">CARTO</a>',
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, © <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
     maxZoom: 19,
   }
 );
-
-// Try watercolor; fall back to carto no-labels
-tileLayer.on('tileerror', () => {
-  if (!map.hasLayer(tileLayerFallback)) {
-    map.removeLayer(tileLayer);
-    tileLayerFallback.addTo(map);
-  }
-});
 tileLayer.addTo(map);
-
-// Additional label layer (subtle, modern-border-free)
-L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/stamen_toner_labels/{z}/{x}/{y}{r}.png',
-  {
-    attribution: '',
-    opacity: 0.3,
-    minZoom: 4,
-    maxZoom: 16,
-    pane: 'shadowPane',
-  }
-).addTo(map);
 
 // ── State ────────────────────────────────────────────────────
 let allRelics = [];
