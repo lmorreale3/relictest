@@ -6,20 +6,28 @@
 
 // ── Colour palettes ──────────────────────────────────────────
 const SHAPE_COLOURS = [
-  '#e8734a','#c8973a','#a4c85a','#5ab8c8','#8a5ae8',
-  '#e85a8a','#4ae87a','#e8c84a','#5a78e8','#c85a5a',
-  '#7ae8c8','#e88a3a','#3ae8c8','#c83ae8','#78c85a',
-  '#e84a5a','#5ac878','#8ac8e8','#e8a45a','#a45ae8',
+  '#F4E04D',
+  '#F2ED6F',
+  '#CEE397',
+  '#8DB1AB',
+  '#587792',
+  '#F4E04D', // repeat if more entries needed
+  '#CEE397',
+  '#587792',
 ];
 
 const MATERIAL_COLOURS = [
-  '#ffd700','#c0c0c0','#cd7f32','#b5e61d','#99d9ea',
-  '#ff7f27','#e8734a','#7fc97f','#beaed4','#fdc086',
-  '#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99',
-  '#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a',
+  '#587792',
+  '#8DB1AB',
+  '#CEE397',
+  '#F2ED6F',
+  '#F4E04D',
+  '#587792',
+  '#8DB1AB',
+  '#CEE397',
 ];
 
-const DEFAULT_COLOUR = '#c8973a';
+const DEFAULT_COLOUR = '#8DB1AB';
 
 // ── Map initialisation ───────────────────────────────────────
 const map = L.map('map', {
